@@ -2,7 +2,9 @@
 const main = document.querySelector('main');
 
 //State
-// Parties: [], 
+const state = {
+  Parties: [],
+};
 
 //Funtions 
 const fetchParties = async () => {
@@ -15,7 +17,17 @@ const fetchParties = async () => {
   renderAllParties();
 }
 
+const renderAllParties = () => {
+  const partyList = document.getElementById('party-list'); 
+  partyList.innerHTML = ''; 
+  state.Parties.forEach(party => {
+    const li = document.createElement('li');
+    li.textContent = `${party.name} - ${party.date} - ${party.location}`;
+    partyList.appendChild(li);
+  });
+};
 
+const ul = document.querySelector('ul');
 
 // const getUsers = async() => {
 //   const API.URL'https://fsa-crud-2aa9294fe819.herokuapp.com/api/2410-FTB-MT-WEB-PT/events'
